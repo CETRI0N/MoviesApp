@@ -11,7 +11,7 @@ namespace MoviesApp.Filters {
 		public void OnActionExecuting(ActionExecutingContext context) {
 
 			DateTime filt = DateTime.Parse(context.HttpContext.Request.Form["Birthday"]);
-			if((DateTime.Now-filt).Year < 7 || (DateTime.Now-filt).Year > 99) {
+			if ((DateTime.Now - filt).TotalDays/365 < 7 || (DateTime.Now - filt).TotalDays/365 > 99) {
 				context.Result = new BadRequestResult();
 			}
 		}
