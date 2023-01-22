@@ -49,7 +49,36 @@ namespace MoviesApp.Data
                     
                     context.SaveChanges();
                 }
-                
+
+
+                if (!context.Actors.Any()) {
+                    context.Actors.AddRange(
+                        new Actor {
+                            Name = "Shaundi",
+                            LastName = "Teyson",
+                            Birthday = DateTime.Parse("1991-5-17")
+                            
+                        },
+                        new Actor {
+                            Name = "Asha",
+                            LastName = "Odekar",
+                            Birthday = DateTime.Parse("1990-7-15")
+                        },
+                        new Actor {
+                            Name = "Tanya",
+                            LastName = "Winter",
+                            Birthday = DateTime.Parse("1991-6-28")
+                        },
+                        new Actor {
+                            Name = "Pirs",
+                            LastName = "Washington",
+                            Birthday = DateTime.Parse("1993-1-19")
+                        }
+                    );
+
+                    context.SaveChanges();
+                }
+
                 var userManager = serviceProvider.GetService<UserManager<ApplicationUser>>();
                 var roleManager = serviceProvider.GetService<RoleManager<IdentityRole>>();
 
