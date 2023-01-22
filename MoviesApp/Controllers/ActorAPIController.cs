@@ -16,7 +16,7 @@ namespace MoviesApp.Controllers {
         [HttpGet] 
         [ProducesResponseType(200, Type = typeof(IEnumerable<ActorDto>))]
         [ProducesResponseType(404)]
-        public ActionResult<IEnumerable<ActorDto>> GetActor() {//get??
+        public ActionResult<IEnumerable<ActorDto>> GetActor() {
             return Ok(_service.GetActors());
         }
 
@@ -29,14 +29,14 @@ namespace MoviesApp.Controllers {
             return Ok(actor);
         }
 
-        [HttpPost] // POST: api/movies
-        public ActionResult<ActorDto> PostMovie(ActorDto inputDto) {
+        [HttpPost] 
+        public ActionResult<ActorDto> PostActor(ActorDto inputDto) {
             var actor = _service.Add(inputDto);
             return CreatedAtAction("GetById", new { id = actor.Id }, actor);
         }
 
-        [HttpPut("{id}")] // PUT: api/movies/5
-        public IActionResult UpdateMovie(int id, ActorDto editDto) {
+        [HttpPut("{id}")] 
+        public IActionResult UpdateActor(int id, ActorDto editDto) {
             var actor = _service.Update(editDto);
 
             if (actor == null) {
@@ -46,8 +46,8 @@ namespace MoviesApp.Controllers {
             return Ok(actor);
         }
 
-        [HttpDelete("{id}")] // DELETE: api/movie/5
-        public ActionResult<ActorDto> DeleteMovie(int id) {
+        [HttpDelete("{id}")]
+        public ActionResult<ActorDto> DeleteActor(int id) {
             var actor = _service.Delete(id);
             if (actor == null) return NotFound();
             return Ok(actor);
